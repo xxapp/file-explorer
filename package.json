@@ -1,0 +1,21 @@
+{
+  "name": "file-explorer",
+  "version": "1.0.0",
+  "description": "explorer to manage files on somepath of server",
+  "main": "file-explorer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "file",
+    "explorer"
+  ],
+  "author": "PIEr whomakepie@outlook.com",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "multer": "^1.0.1"
+  }
+}
