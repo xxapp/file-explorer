@@ -1,9 +1,11 @@
 /// <reference path="typings/node/node.d.ts"/>
 var path = require('path');
 var express = require('express');
-var c = require('child_process');
-var handlebars = require('express-handlebars').create({ defaultLayout: 'main', extname: '.hbs' });
+var handlebars = require('express-handlebars').create({ extname: '.hbs' });
 var bodyParser = require('body-parser');
+
+var home = require('./controllers/home');
+var file = require('./controllers/file');
 
 var app = express();
 
@@ -19,17 +21,14 @@ app.set('views', path.join(__dirname + '/views'));
 app.engine('hbs', handlebars.engine);
 app.set('view engine', 'hbs');
 
-app.get('/', function (req, res) {
-	res.set('Content-Type', 'text/plain');
-	var s = '';
-	for (var name in req.headers) {
-		s += name += ': ' + req.headers[name] + '\n';
-	}
-	res.send(s);
-});
+// 分配控制器路由
+app.use('/', home);
+app.use('/home', home);
+app.use('/file', file);
 
+// 开启web服务
 app.listen(app.get('port'), function () {
 	console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl+C to terminate.');
 });
 
-c.exec('start http://localhost:' + app.get('port') + '/');
+require('child_process').exec('start http://localhost:' + app.get('port') + '/');
