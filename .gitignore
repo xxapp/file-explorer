@@ -31,4 +31,4 @@ node_modules
 typings
 
 # app uploadFiles
-uploads/*.*
+uploads/
