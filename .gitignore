@@ -29,3 +29,6 @@ node_modules
 # VS CODE configuration
 .settings
 typings
+
+# app uploadFiles
+uploads/*.*
