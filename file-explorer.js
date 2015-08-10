@@ -12,7 +12,7 @@ var app = express();
 // 配置服务器环境
 app.disable('x-powered-by');
 app.set('port', process.env.PORT || 3000);
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/statics'))
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // 配置模板

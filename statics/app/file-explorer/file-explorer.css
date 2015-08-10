@@ -1,0 +1,184 @@
+body {
+	background: #20b2aa;
+	font-family: Microsoft Yahei;
+	font-size: 13px;
+}
+
+.explorer {
+	background-color: white;
+	height: 500px;
+	width: 50%;
+	margin: 100px auto;
+	border: solid 1px #69BCEE;
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 0px 0px 20px #000;
+	box-shadow: 0px 0px 20px #000;
+	-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Strength=20, Direction=0, Color='#000000');
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=20, Direction=0, Color='#000000');
+}
+
+.explorer-title {
+	height: 28px;
+}
+
+.explorer-title .toolbar {
+	padding: 6px 9px;	
+	width: 60%;
+  	float: left;
+}
+
+.explorer-title .toolbar .separator {
+	margin: 0 9px 0 2px;
+	border-left: solid 1px #a4a4a4;
+	font-size: 11px;
+	vertical-align: top;
+}
+
+.explorer-title .toolbar .title {
+	vertical-align: top;
+}
+
+.explorer-title .window-menu {
+	float: right;
+	width: 30%;
+}
+
+.explorer-title .window-menu .window-btn {
+	width: 45px;
+	height: 29px;
+	float: right;
+	margin-left: 1px;
+}
+
+.explorer-title .window-menu .window-btn div {
+	width: 100%;
+	height: 100%;
+}
+
+.explorer-title .window-menu .window-btn.mhover {
+	background: #e5e5e5;
+}
+
+.explorer-title .window-menu .window-btn.chover {
+	background: #e81123;
+}
+
+.explorer-title .window-menu .window-btn-minimize {
+	background: url('../../lib/image/minimize.png') no-repeat center;
+}
+
+.explorer-title .window-menu .window-btn-maximize {
+	background: url('../../lib/image/maximize.png') no-repeat center;
+}
+
+.explorer-title .window-menu .window-btn-close {
+	background: url('../../lib/image/close.png') no-repeat center;
+}
+
+.explorer-title .window-menu .window-btn-close-white {
+	background: url('../../lib/image/close-white.png') no-repeat center;
+}
+
+.explorer-body {
+	height: 448px;
+}
+
+.explorer-body .nav {
+	height: 28px;
+}
+
+.explorer-body .nav a{
+	float: left;
+	height: 100%;
+	width: 32px;
+}
+
+.explorer-body .nav div[class^="nav-btn-"],div[class*=" nav-btn-"] {
+	height: 100%;
+	width: 32px;
+}
+
+.explorer-body .nav .nav-btn-back {
+	background: url('../../lib/image/back.png') no-repeat center;
+}
+
+.explorer-body .nav .nav-btn-forward {
+	background: url('../../lib/image/forward.png') no-repeat center;
+}
+
+.explorer-body .nav .nav-btn-above {
+	background: url('../../lib/image/above.png') no-repeat center;
+}
+
+.explorer-body .nav .nav-btn-refresh {
+	background: url('../../lib/image/refresh.png') no-repeat center;
+}
+
+.explorer-body .nav .nav-info {
+	width: 50%;
+	height: 80%;
+	border: solid 1px #d9d9d9;
+	margin-top: 2px;
+}
+
+.explorer-body table {
+	width: 100%;
+}
+
+.explorer-body div.table-header {
+	padding: 15px 15px 0 15px;
+	height: 28px;
+	color: #235c7f;
+}
+.explorer-body div.table-body {
+	padding: 0 15px 15px 15px;
+	height: 350px;
+	overflow-x: auto;
+}
+
+.explorer-body table tr.hover {
+	border: solid 1px #aad9ff;
+	background: #cce8ff;
+}
+
+.explorer-body table th,td {
+	font-weight: normal;
+	text-align: left;
+	padding-left: 10px;
+	width: 25%;
+	height: 28px;
+}
+
+.explorer-body table td img {
+	vertical-align: top;
+}
+
+.explorer-body table td.cell-filename a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.explorer-body table td.cell-gray {
+	color: #737373;
+}
+
+.explorer-footer {
+	height: 24px;
+	padding: 5px 14px;
+	color: #0C3467;
+	font-size: 12px;
+}
+
+.pull-right {
+	float: right;
+}
+
+.pull-left {
+	float: left;
+}
+
+.clearfix {
+  zoom: 1;
+  display: table;
+  width: 100%;
+}
