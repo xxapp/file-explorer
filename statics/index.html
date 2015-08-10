@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="./app/file-explorer/file-explorer.css">
 </head>
 <body>
-	<div class="explorer">
+	<div class="explorer" ms-controller="fileExplorer">
 		<div class="explorer-title">
 			<div class="toolbar">
 				<img src="lib/image/folder.png">
@@ -18,7 +18,7 @@
 				<a href="javascript:;" title="新建文件"><img src="lib/image/file.png"></a>
 				<a href="javascript:;" title="新建文件夹"><img src="lib/image/folder.png"></a>
 				<span class="separator"></span>
-				<span class="title">test</span>
+				<span class="title">{{curDir}}</span>
 			</div>
 			<div class="window-menu">
 				<div class="window-btn chover">
@@ -89,6 +89,258 @@
 								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
 							</td>
 						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cell-filename">
+								<img src="lib/image/folder.png">
+								<a href="javasrcipt:;">hello</a>
+							</td>
+							<td class="cell-gray">2015-03-03 19:12:12</td>
+							<td class="cell-gray">23k</td>
+							<td>
+								<a href="javasrcipt:;" title="重命名"><img src="lib/image/file-rename.png"></a>
+								<a href="javasrcipt:;" title="删除"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -97,6 +349,12 @@
 			<span>8个项目</span>
 		</div>
 	</div>
-	<script src="./app/file-explorer/file-explorer.js"></script>
+	<script src="./vendor/sea/sea.js"></script>
+	<script>
+		seajs.config({
+			base: './'
+		});
+		seajs.use('app/main');
+	</script>
 </body>
 </html>

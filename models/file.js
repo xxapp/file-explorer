@@ -23,7 +23,8 @@ exports.getFiles = function (path) {
 					statsArray.push({
 						filename: files[i],
 						isFile: stats.isFile(),
-						lastModify: stats.mtime
+						lastModify: stats.mtime.getTime(),
+						size: stats.size
 					});
 				} catch (err) {}
 			}

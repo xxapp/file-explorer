@@ -56,7 +56,12 @@ file.post('/getFiles', function (req, res) {
 			res.json([]); 
 		})
 		.then(function (data) {
-			res.json(data);
+			res.json({
+				curDir: pathHandler.basename(req.body.path),
+				curPath: req.body.path,
+				abovePath: pathHandler.dirname(req.body.path),
+				files: data
+			});
 		});
  });
  
@@ -117,13 +122,14 @@ file.post('/deleteFile', function (req, res) {
  * 创建文件
  * 
  * @param {string} path
+ * @param {string} filename
  * @param {string} isFile
  * @response {object} 创建结果，包含创建的文件信息
  * @api public
  */
 file.post('/createFile', function (req, res) {
 	var basePath = configReader.getBasePath();
-	var path = pathHandler.join(basePath, pathHandler.sep, req.body.path);
+	var path = pathHandler.join(basePath, pathHandler.sep, req.body.path, pathHandler.sep, req.body.filename);
 	var isFile = (req.body.isFile == 'true');
 	fileModel.createFile(path, isFile)
 		.catch(function (err) { 
@@ -151,7 +157,7 @@ file.post('/createFile', function (req, res) {
 file.post('/uploadFile', upload.single('file'), function (req, res) {
 	var basePath = configReader.getBasePath();
 	var file = req.file;
-	var path = pathHandler.dirname(pathHandler.join(basePath, pathHandler.sep, req.body.path)) + pathHandler.sep + file.originalname;
+	var path = pathHandler.join(basePath, pathHandler.sep, req.body.path + pathHandler.sep + file.originalname);
 	fileModel.uploadFile(path, file)
 		.catch(function (err) { 
 			var errMsg = '找不到路径：' + err.path;

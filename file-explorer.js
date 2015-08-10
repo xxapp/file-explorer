@@ -1,7 +1,7 @@
 /// <reference path="typings/node/node.d.ts"/>
 var path = require('path');
 var express = require('express');
-var handlebars = require('express-handlebars').create({ extname: '.hbs' });
+require('ejs');
 var bodyParser = require('body-parser');
 
 var home = require('./controllers/home');
@@ -17,8 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // 配置模板
 app.set('views', path.join(__dirname + '/views'));
-app.engine('hbs', handlebars.engine);
-app.set('view engine', 'hbs');
+app.set('view engine', 'ejs');
 
 // 分配控制器路由
 app.use('/', home);
@@ -30,4 +29,4 @@ app.listen(app.get('port'), function () {
 	console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl+C to terminate.');
 });
 
-require('child_process').exec('start http://localhost:' + app.get('port') + '/');
+require('child_process').exec('start http://localhost:' + app.get('port') + '/home');

@@ -62,6 +62,9 @@ body {
 .explorer-title .window-menu .window-btn.chover {
 	background: #e81123;
 }
+.explorer-title .window-menu .window-btn.chover div {
+	background: url('../../lib/image/close-white.png') no-repeat center;
+}
 
 .explorer-title .window-menu .window-btn-minimize {
 	background: url('../../lib/image/minimize.png') no-repeat center;
@@ -74,11 +77,6 @@ body {
 .explorer-title .window-menu .window-btn-close {
 	background: url('../../lib/image/close.png') no-repeat center;
 }
-
-.explorer-title .window-menu .window-btn-close-white {
-	background: url('../../lib/image/close-white.png') no-repeat center;
-}
-
 .explorer-body {
 	height: 448px;
 }
@@ -126,14 +124,14 @@ body {
 }
 
 .explorer-body div.table-header {
-	padding: 15px 15px 0 15px;
+	padding: 15px 29px 0 15px;
 	height: 28px;
 	color: #235c7f;
 }
 .explorer-body div.table-body {
 	padding: 0 15px 15px 15px;
 	height: 350px;
-	overflow-x: auto;
+	overflow-y: scroll;
 }
 
 .explorer-body table tr.hover {
@@ -153,9 +151,13 @@ body {
 	vertical-align: top;
 }
 
-.explorer-body table td.cell-filename a {
+.explorer-body table td.cell-filename > a {
 	text-decoration: none;
 	color: #000000;
+}
+
+.explorer-body table td.cell-filename > span input {
+	width: 50%;
 }
 
 .explorer-body table td.cell-gray {
@@ -181,4 +183,32 @@ body {
   zoom: 1;
   display: table;
   width: 100%;
+}
+
+.hide {
+	visibility: hidden;
+}
+
+/*文件选择控件样式*/
+.file-group {
+	position: relative;
+	width: 16px;
+	height: 16px;
+	background: url('../../lib/image/file-upload.png') no-repeat center;
+	overflow: hidden;
+	cursor: pointer;
+	line-height: 80px;
+	font-size: 16px;
+	text-align: center;
+	color: #fff;
+	border-radius: 4px;
+}
+.file-group input {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 300px;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
 }

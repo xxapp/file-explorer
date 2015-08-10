@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Web 文件管理器</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="fragment" content="!" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<link rel="stylesheet" href="./app/file-explorer/file-explorer.css">
+    <style type="text/css">
+        .ms-controller,.ms-important,[ms-controller],[ms-important]{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+	<div class="explorer" ms-controller="fileExplorer">
+		<div class="explorer-title">
+			<div class="toolbar">
+				<img src="lib/image/folder.png">
+				<span class="separator"></span>
+				<a href="javascript:;" style="position:absolute;" title="上传文件">
+					<form action="file/uploadFile" enctype="multipart/form-data" method="post" target="parasitic_frame">
+						<div class="file-group">
+							<input id="upload" name="file" type="file">
+							<input type="hidden" name="path" ms-duplex="curPath">
+						</div>
+					</form>
+					<iframe name="parasitic_frame" id="parasitic_frame" style="display:none;"></iframe>
+				</a>
+				<a href="javascript:;" style="margin-left:20px;" title="新建文件" ms-click="add(true)"><img src="lib/image/file.png"></a>
+				<a href="javascript:;" title="新建文件夹" ms-click="add(false)"><img src="lib/image/folder.png"></a>
+				<span class="separator"></span>
+				<span class="title">{{curDir}}</span>
+			</div>
+			<div class="window-menu">
+				<div class="window-btn" ms-hover="chover">
+					<div class="window-btn-close"></div>
+				</div>
+				<div class="window-btn" ms-hover="mhover">
+					<div class="window-btn-maximize"></div>
+				</div>
+				<div class="window-btn" ms-hover="mhover">
+					<div class="window-btn-minimize"></div>
+				</div>
+			</div>
+		</div>
+		<div class="explorer-body">
+			<div class="nav">
+				<div class="clearfix"></div>
+				<a href="javascript:;" title="后退" ms-click="go(-1)">
+					<div class="nav-btn-back"></div>
+				</a>
+				<a href="javascript:;" title="前进" ms-click="go(1)">
+					<div class="nav-btn-forward"></div>
+				</a>
+				<a ms-href="#!{{abovePath}}" title="返回上级">
+					<div class="nav-btn-above"></div>
+				</a>
+				<a href="javascript:;" title="刷新" ms-click="go(0)">
+					<div class="nav-btn-refresh"></div>
+				</a>
+				<div class="nav-info pull-left">{{curPath}}</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="table-header">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<thead>
+						<tr>
+							<th>名称</th>
+							<th>修改日期</th>
+							<th>大小</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="table-body">
+				<table class="table-body" border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr ms-hover="hover" ms-repeat-file="files">
+							<td class="cell-filename">
+								<img ms-src="{{file.isFile ? 'lib/image/file.png' : 'lib/image/folder.png'}}">
+								<a ms-visible="file.isEditing == false" ms-href="{{file.isFile ? 'javascript:;' : '#!' + curPath + '/' + file.filename}}">{{file.filename}}</a>
+								<span ms-visible="file.isEditing == true">
+									<input type="text" ms-duplex="file.filename">
+									<a href="javascript:;" ms-click="save(file)">保存</a>
+									<a href="javascript:;" ms-click="cancel(file)">取消</a>
+								</span>
+							</td>
+							<td class="cell-gray">{{file.lastModify | date('yyyy/MM/dd HH:mm')}}</td>
+							<td class="cell-gray" ms-class="hide:!file.isFile">{{Math.round(file.size/1000)}}KB</td>
+							<td>
+								<a ms-class="hide:isOneEditing" href="javasrcipt:;" title="重命名" ms-click="edit(file)"><img src="lib/image/file-rename.png"></a>
+								<a ms-class="hide:isOneEditing" href="javasrcipt:;" title="删除" ms-click="del(file)"><img src="lib/image/file-delete.png"></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="explorer-footer">
+			<span>{{files.size()}}个项目</span>
+		</div>
+	</div>
+	<script src="vendor/sea/sea.js"></script>
+	<script>
+		seajs.config({
+			base: './'
+		});
+		seajs.use('app/main');
+	</script>
+</body>
+</html>
