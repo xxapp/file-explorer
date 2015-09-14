@@ -20,7 +20,6 @@ app.set('views', path.join(__dirname + '/views'));
 app.set('view engine', 'ejs');
 
 // 分配控制器路由
-app.use('/', home);
 app.use('/home', home);
 app.use('/file', file);
 

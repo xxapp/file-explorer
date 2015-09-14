@@ -22,7 +22,7 @@ var validator = function (req, res, next, val) {
 			} else {
 				var errMsg = '找不到路径：' + path
 				console.error(errMsg);
-				res.json({
+				res.type('.html').json({
 					success: false,
 					msg: errMsg
 				});
@@ -32,8 +32,6 @@ var validator = function (req, res, next, val) {
 file.use('*', function (req, res, next) {
 	if (req.body.path) {
 		validator(req, res, next, req.body.path)
-	} else if (req.body.newPath) {
-		validator(req, res, next, req.body.newPath)
 	} else {
 		next();
 	}
@@ -53,10 +51,10 @@ file.post('/getFiles', function (req, res) {
 	fileModel.getFiles(path)
 		.catch(function (err) { 
 			console.error('找不到路径：' + err.path);
-			res.json([]); 
+			res.type('.html').json([]); 
 		})
 		.then(function (data) {
-			res.json({
+			res.type('.html').json({
 				curDir: pathHandler.basename(req.body.path),
 				curPath: req.body.path,
 				abovePath: pathHandler.dirname(req.body.path),
@@ -78,17 +76,29 @@ file.post('/renameFile', function (req, res) {
 	var basePath = configReader.getBasePath();
 	var path = pathHandler.join(basePath, pathHandler.sep, req.body.path);
 	var newPath = pathHandler.join(basePath, pathHandler.sep, req.body.newPath);
-	fileModel.renameFile(path, newPath)
-		.catch(function (err) { 
-			var errMsg = '找不到路径：' + err.path;
-			console.error(errMsg);
-			res.json({
-				success: false,
-				msg: errMsg
-			}); 
-		})
-		.then(function (data) {
-			res.json(data);
+	fileModel.isPathExist(newPath)
+		.done(function (exists) {
+			if (exists) {
+				var errMsg = '路径：' + newPath + '已经存在，请使用其他名字';
+				console.error(errMsg);
+				res.type('.html').json({
+					success: false,
+					msg: errMsg
+				}); 
+			} else {
+				fileModel.renameFile(path, newPath)
+					.catch(function (err) { 
+						var errMsg = '找不到路径：' + err.path;
+						console.error(errMsg);
+						res.type('.html').json({
+							success: false,
+							msg: errMsg
+						}); 
+					})
+					.then(function (data) {
+						res.type('.html').json(data);
+					});
+			}
 		});
 });
   
@@ -107,13 +117,13 @@ file.post('/deleteFile', function (req, res) {
 		.catch(function (err) { 
 			var errMsg = '找不到路径：' + err.path;
 			console.error(errMsg);
-			res.json({
+			res.type('.html').json({
 				success: false,
 				msg: errMsg
 			}); 
 		})
 		.then(function (data) {
-			res.json(data);
+			res.type('.html').json(data);
 		});
 });
  
@@ -131,17 +141,29 @@ file.post('/createFile', function (req, res) {
 	var basePath = configReader.getBasePath();
 	var path = pathHandler.join(basePath, pathHandler.sep, req.body.path, pathHandler.sep, req.body.filename);
 	var isFile = (req.body.isFile == 'true');
-	fileModel.createFile(path, isFile)
-		.catch(function (err) { 
-			var errMsg = '找不到路径：' + err.path;
-			console.error(errMsg);
-			res.json({
-				success: false,
-				msg: errMsg
-			}); 
-		})
-		.then(function (data) {
-			res.json(data);
+	fileModel.isPathExist(path)
+		.done(function (exists) {
+			if (exists) {
+				var errMsg = '路径：' + path + '已经存在，请使用其他名字';
+				console.error(errMsg);
+				res.type('.html').json({
+					success: false,
+					msg: errMsg
+				}); 
+			} else {
+				fileModel.createFile(path, isFile)
+					.catch(function (err) { 
+						var errMsg = '找不到路径：' + err.path;
+						console.error(errMsg);
+						res.type('.html').json({
+							success: false,
+							msg: errMsg
+						}); 
+					})
+					.then(function (data) {
+						res.type('.html').json(data);
+					});
+			}
 		});
 });
 
@@ -158,17 +180,29 @@ file.post('/uploadFile', upload.single('file'), function (req, res) {
 	var basePath = configReader.getBasePath();
 	var file = req.file;
 	var path = pathHandler.join(basePath, pathHandler.sep, req.body.path + pathHandler.sep + file.originalname);
-	fileModel.uploadFile(path, file)
-		.catch(function (err) { 
-			var errMsg = '找不到路径：' + err.path;
-			console.error(errMsg);
-			res.json({
-				success: false,
-				msg: errMsg
-			}); 
-		})
-		.then(function (data) {
-			res.json(data);
+	fileModel.isPathExist(path)
+		.done(function (exists) {
+			if (exists) {
+				var errMsg = '路径：' + path + '已经存在，请先删除原文件再上传';
+				console.error(errMsg);
+				res.type('.html').json({
+					success: false,
+					msg: errMsg
+				}); 
+			} else {
+				fileModel.uploadFile(path, file)
+					.catch(function (err) { 
+						var errMsg = '找不到路径：' + err.path;
+						console.error(errMsg);
+						res.type('.html').json({
+							success: false,
+							msg: errMsg
+						}); 
+					})
+					.then(function (data) {
+						res.type('.html').json(data);
+					});
+			}
 		});
 });
  

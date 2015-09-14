@@ -60,10 +60,10 @@
 				<a href="javascript:;" title="刷新" ms-click="go(0)">
 					<div class="nav-btn-refresh"></div>
 				</a>
-				<div class="nav-info pull-left">{{curPath}}</div>
+				<div id="nav-info" class="nav-info pull-left">{{curPath}}</div>
 			</div>
 			<div class="clearfix"></div>
-			<div class="table-header">
+			<div id="table-header" class="table-header">
 				<table border="0" cellpadding="0" cellspacing="0">
 					<thead>
 						<tr>
@@ -76,7 +76,7 @@
 				</table>
 			</div>
 			<div class="table-body">
-				<table class="table-body" border="0" cellpadding="0" cellspacing="0">
+				<table border="0" cellpadding="0" cellspacing="0">
 					<tbody>
 						<tr ms-hover="hover" ms-repeat-file="files">
 							<td class="cell-filename">
@@ -89,10 +89,10 @@
 								</span>
 							</td>
 							<td class="cell-gray">{{file.lastModify | date('yyyy/MM/dd HH:mm')}}</td>
-							<td class="cell-gray" ms-class="hide:!file.isFile">{{Math.round(file.size/1000)}}KB</td>
+							<td class="cell-gray">{{file.isFile ? Math.round(file.size/1000) + 'KB' : ''}}</td>
 							<td>
-								<a ms-class="hide:isOneEditing" href="javasrcipt:;" title="重命名" ms-click="edit(file)"><img src="lib/image/file-rename.png"></a>
-								<a ms-class="hide:isOneEditing" href="javasrcipt:;" title="删除" ms-click="del(file)"><img src="lib/image/file-delete.png"></a>
+								<a ms-class="hide:isOneEditing" href="javascript:;" title="重命名" ms-click="edit(file)"><img src="lib/image/file-rename.png"></a>
+								<a ms-class="hide:isOneEditing" href="javascript:;" title="删除" ms-click="del(file)"><img src="lib/image/file-delete.png"></a>
 							</td>
 						</tr>
 					</tbody>

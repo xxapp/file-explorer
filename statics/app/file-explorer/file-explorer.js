@@ -6,22 +6,39 @@ define(function (require, exports, module) {
 	var sep = '/';
 	
 	// 对后端结果式响应值进行判断
-	function isSuccess(result) {
+	function isSuccess(result, file) {
+		if (result.firstChild) result = result.firstChild.data;
+		result = avalon.parseJSON(result);
 		if (result.success) {
 			feVM.load(feVM.curPath);
+			file && feVM.cancel(file);
 		} else {
 			alert(result.msg);
 		}
 	}
 	
 	// 无刷新上传文件
-	document.getElementById('upload').onchange = function () {
+	function fileChangeHandler() {
 		if (!this.value) return ;
 		this.form.submit();
 	}
+	document.getElementById('upload').onchange = fileChangeHandler;
 	document.getElementById('parasitic_frame').onload = function () {
+		document.getElementById('upload').value = '';
+		var oldInput = document.getElementById("upload");   
+       
+		var newInput = document.createElement("input");   
+		
+		newInput.type = "file";
+		newInput.id = oldInput.id;
+		newInput.name = oldInput.name;
+		newInput.className = oldInput.className;
+		newInput.style.cssText = oldInput.style.cssText;
+		newInput.onchange = fileChangeHandler;
+		
+		oldInput.parentNode.replaceChild(newInput, oldInput); 
+		
 		var data = this.contentWindow.document.body.innerText;
-		data = avalon.parseJSON(data);
 		isSuccess(data);
 	}
 	
@@ -60,6 +77,8 @@ define(function (require, exports, module) {
 			avalon.post('file/getFiles', {
 				path: path
 			}).done(function (data) {
+				if (data.firstChild) data = data.firstChild.data;
+				data = avalon.parseJSON(data);
 				if (data.success != void 0) {
 					isSuccess(data);
 					if (data.success) {
@@ -99,14 +118,13 @@ define(function (require, exports, module) {
 			feVM.isOneEditing = true;
 		},
 		save: function (file) {					// 保存添加
-			feVM.cancel(file);
 			if (file.dirty) {
 				avalon.post('file/createFile', {
 					path: feVM.curPath,
 					filename: file.filename,
 					isFile: file.isFile
 				}).done(function (data) {
-					isSuccess(data);
+					isSuccess(data, file);
 				});
 			} else {
 				avalon.post('file/renameFile', {
