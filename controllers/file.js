@@ -14,7 +14,12 @@ var upload = multer({ dest: 'uploads/' })
  */
 var validator = function (req, res, next, val) {
 	var basePath = configReader.getBasePath();
+	// 过滤试图访问父级目录的路径内容
+	console.log('before filter', val);
+	req.query.path = val = val.replace(/\.\.\//g, '');
+	console.log('aftert filter', val);
 	var path = pathHandler.join(basePath, pathHandler.sep, val);
+	console.log(path);
 	fileModel.isPathExist(path)
 		.done(function (exists) {
 			if (exists) {
@@ -30,8 +35,9 @@ var validator = function (req, res, next, val) {
 		});
 };
 file.use('*', function (req, res, next) {
-	if (req.body.path) {
-		validator(req, res, next, req.body.path)
+	var path = req.body.path || req.query.path;
+	if (path) {
+		validator(req, res, next, path)
 	} else {
 		next();
 	}
