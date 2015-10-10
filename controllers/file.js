@@ -45,15 +45,15 @@ file.use('*', function (req, res, next) {
  * @response {array} path下文件的信息
  * @api public
  */
-file.post('/getFiles', function (req, res) {
+file.get('/getFiles', function (req, res) {
 	var basePath = configReader.getBasePath();
-	var path = pathHandler.join(basePath, pathHandler.sep, req.body.path);
+	var path = pathHandler.join(basePath, pathHandler.sep, req.query.path);
 	fileModel.getFiles(path)
 		.then(function (data) {
 			res.type('.html').json({
-				curDir: pathHandler.basename(req.body.path),
-				curPath: req.body.path,
-				abovePath: pathHandler.dirname(req.body.path),
+				curDir: pathHandler.basename(req.query.path),
+				curPath: req.query.path,
+				abovePath: pathHandler.dirname(req.query.path),
 				files: data
 			});
 		})

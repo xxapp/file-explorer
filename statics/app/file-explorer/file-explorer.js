@@ -74,7 +74,7 @@ define(function (require, exports, module) {
 		load: function (path) {					// 获取当前目录下的所有文件信息
 			// 去掉多余的斜杠
 			path = path.replace(/\/\//g, '/');
-			avalon.post('file/getFiles', {
+			avalon.get('file/getFiles', {
 				path: path
 			}).done(function (data) {
 				if (data.firstChild) data = data.firstChild.data;

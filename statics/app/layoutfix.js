@@ -41,7 +41,8 @@ define(function (require, exports, module) {
 			width: '100px',
 			height: '100px',
 			overflowY: 'scroll',
-			visibility: 'hidden'
+			visibility: 'hidden',
+			position: 'fixed'
 		}, i, scrollbarWidth;
 		for (i in styles) oP.style[i] = styles[i];
 	    document.body.appendChild(oP);

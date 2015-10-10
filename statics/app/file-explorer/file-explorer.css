@@ -7,8 +7,8 @@ body {
 .explorer {
 	background-color: white;
 	height: 500px;
-	width: 50%;
-	margin: 100px auto;
+	width: 75%;
+	margin: 100px auto 0;
 	border: solid 1px #69BCEE;
 	-moz-box-shadow: 3px 3px 4px #000;
 	-webkit-box-shadow: 0px 0px 20px #000;
