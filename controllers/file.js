@@ -49,10 +49,6 @@ file.post('/getFiles', function (req, res) {
 	var basePath = configReader.getBasePath();
 	var path = pathHandler.join(basePath, pathHandler.sep, req.body.path);
 	fileModel.getFiles(path)
-		.catch(function (err) { 
-			console.error('找不到路径：' + err.path);
-			res.type('.html').json([]); 
-		})
 		.then(function (data) {
 			res.type('.html').json({
 				curDir: pathHandler.basename(req.body.path),
@@ -60,6 +56,10 @@ file.post('/getFiles', function (req, res) {
 				abovePath: pathHandler.dirname(req.body.path),
 				files: data
 			});
+		})
+		.catch(function (err) { 
+			console.error('找不到路径：' + err.path);
+			res.type('.html').json([]); 
 		});
  });
  
@@ -87,6 +87,9 @@ file.post('/renameFile', function (req, res) {
 				}); 
 			} else {
 				fileModel.renameFile(path, newPath)
+					.then(function (data) {
+						res.type('.html').json(data);
+					})
 					.catch(function (err) { 
 						var errMsg = '找不到路径：' + err.path;
 						console.error(errMsg);
@@ -94,9 +97,6 @@ file.post('/renameFile', function (req, res) {
 							success: false,
 							msg: errMsg
 						}); 
-					})
-					.then(function (data) {
-						res.type('.html').json(data);
 					});
 			}
 		});
@@ -114,6 +114,9 @@ file.post('/deleteFile', function (req, res) {
 	var basePath = configReader.getBasePath();
 	var path = pathHandler.join(basePath, pathHandler.sep, req.body.path);
 	fileModel.deleteFile(path)
+		.then(function (data) {
+			res.type('.html').json(data);
+		})
 		.catch(function (err) { 
 			var errMsg = '找不到路径：' + err.path;
 			console.error(errMsg);
@@ -121,9 +124,6 @@ file.post('/deleteFile', function (req, res) {
 				success: false,
 				msg: errMsg
 			}); 
-		})
-		.then(function (data) {
-			res.type('.html').json(data);
 		});
 });
  
@@ -152,6 +152,9 @@ file.post('/createFile', function (req, res) {
 				}); 
 			} else {
 				fileModel.createFile(path, isFile)
+					.then(function (data) {
+						res.type('.html').json(data);
+					})
 					.catch(function (err) { 
 						var errMsg = '找不到路径：' + err.path;
 						console.error(errMsg);
@@ -159,9 +162,6 @@ file.post('/createFile', function (req, res) {
 							success: false,
 							msg: errMsg
 						}); 
-					})
-					.then(function (data) {
-						res.type('.html').json(data);
 					});
 			}
 		});
@@ -191,6 +191,9 @@ file.post('/uploadFile', upload.single('file'), function (req, res) {
 				}); 
 			} else {
 				fileModel.uploadFile(path, file)
+					.then(function (data) {
+						res.type('.html').json(data);
+					})
 					.catch(function (err) { 
 						var errMsg = '找不到路径：' + err.path;
 						console.error(errMsg);
@@ -198,9 +201,6 @@ file.post('/uploadFile', upload.single('file'), function (req, res) {
 							success: false,
 							msg: errMsg
 						}); 
-					})
-					.then(function (data) {
-						res.type('.html').json(data);
 					});
 			}
 		});
